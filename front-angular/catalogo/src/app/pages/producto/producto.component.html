@@ -1,0 +1,76 @@
+<div class=" container col-md-7 col-lg-8">
+    <h4 class="mb-3" *ngIf="modoEdicion">Edición de Productos</h4>
+    <h4 class="mb-3" *ngIf="!modoEdicion">Registro de Productos</h4>
+    <form [formGroup]="checkoutForm" class="needs-validation" novalidate (ngSubmit)="onSubmit()" method="post">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Escriba su nombre" value="" required
+                    formControlName="nombre">
+                <div class="invalid-feedback">
+                    El campo Nombre es obligatorio.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <input type="text" class="form-control" id="descripcion" placeholder="Escriba una descripcion" value=""
+                    required formControlName="descripcion">
+                <div class="invalid-feedback">
+                    El campo Descripción es obligatorio.
+                </div>
+            </div> 
+                <div class="col-md-6">
+                    <label for="sku" class="form-label">sku</label>
+                    <input type="text" class="form-control" id="sku" placeholder="Escriba el sku"
+                        required formControlName="sku">
+                    <div class="invalid-feedback">
+                        El campo sku es obligatorio.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="imagen" class="form-label">Imagen</label>
+                    <input type="texto" class="form-control" id="imagen" placeholder="Escriba el url de la imagen"
+                        required formControlName="imagen">
+                    <div class="invalid-feedback">
+                        La url de la imagen es obligatorio.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="categorias" class="form-label">Categoria</label>
+                    <input type="texto" class="form-control" id="categorias" placeholder="Escriba las categorias de la imagen"
+                        required formControlName="categorias">
+                    <div class="invalid-feedback">
+                        La Categoria es obligatoria.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="texto" class="form-control" id="precio" placeholder="Escriba el precio"
+                        required formControlName="precio">
+                    <div class="invalid-feedback">
+                        El precio es obligatorio.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="texto" class="form-control" id="stock" placeholder="Escriba el stock"
+                        required formControlName="stock">
+                    <div class="invalid-feedback">
+                        El stock es obligatorio.
+                    </div>
+                </div>
+
+                <div class="col-md-10 col-md-offset-2">
+                    <span class="btn-productos">
+                        <button class="btn btn-primary" type="submit" [disabled]="!checkoutForm.valid">
+                            Salvar
+                        </button>
+                        &nbsp;
+                        <button class="btn btn-default" type="button" [routerLink]='["/home"]'>
+                            Cancelar
+                        </button>
+                    </span>
+                </div>
+            </div>
+    </form>
+</div>

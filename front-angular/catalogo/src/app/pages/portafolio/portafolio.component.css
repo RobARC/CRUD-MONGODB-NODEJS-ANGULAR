@@ -1,0 +1,21 @@
+.two-column-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+    grid-gap: 10px; /* Espacio entre las columnas */
+    
+}
+.myImage{
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+   
+}
+
+
+
+
+
+

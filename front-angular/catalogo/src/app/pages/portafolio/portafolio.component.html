@@ -1,0 +1,16 @@
+<div class="two-column-container">
+    <mat-card class="myCard text-center" *ngFor="let producto of productos | paginate: { itemsPerPage: 5, currentPage: page }">
+        <mat-card-content>
+            <h2 class="nombre">
+                        {{producto.nombre}}
+                    </h2>
+            <img  src= "{{producto.imagen}}" mat-card-image class="myImage" (click)="productoDetalle(producto._id)" height="400">
+            <h3>Precio: ${{producto.precio}}</h3>
+            <h3>Sku: {{producto.sku}}</h3>
+        </mat-card-content>
+      </mat-card>
+      
+</div>
+<div class="container">
+    <pagination-controls class="hijo" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</div>

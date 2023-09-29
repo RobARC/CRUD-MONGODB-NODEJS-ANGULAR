@@ -1,0 +1,8 @@
+.spacer {
+    flex: 1 1 0; /* Hace que el elemento sea flexible y empuje los elementos a la derecha */
+    padding: 5px;
+  }
+
+  .button-spacer {
+    margin-right: 16px; /* Agrega un margen entre los botones (ajusta según tus necesidades) */
+  }
