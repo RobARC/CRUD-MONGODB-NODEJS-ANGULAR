@@ -13,11 +13,11 @@
     </mat-card>
     <mat-toolbar class="toolbar-butons">
         <span class="spacer"></span>
-        <button mat-raised-button color="warn" (click)="editProduct(productoId)">
+        <button mat-raised-button color="warn" (click)="editProduct(productoId)" *ngIf="rol === 'Administrador'">
             Editar Producto
         </button>
         <span class="button-spacer"></span>
-        <button mat-raised-button color="warn" (click)="deleteProducto(productoId)">
+        <button mat-raised-button color="warn" (click)="deleteProducto(productoId)" *ngIf="rol === 'Administrador'">
             Eliminar Producto
         </button>
     </mat-toolbar>

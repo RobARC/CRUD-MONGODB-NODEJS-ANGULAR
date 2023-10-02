@@ -6,3 +6,8 @@
   .button-spacer {
     margin-right: 16px; /* Agrega un margen entre los botones (ajusta según tus necesidades) */
   }
+
+  .myImage{
+    max-width: 100%;
+    height: auto;
+  }

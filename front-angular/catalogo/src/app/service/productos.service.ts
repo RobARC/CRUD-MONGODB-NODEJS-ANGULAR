@@ -16,7 +16,7 @@ export class ProductosService {
   constructor(private http: HttpClient) { }
 
   async getProductos(): Promise<Observable<Producto[]>>{
-    return  await this.http.get<any>(this.baseUrl)
+    return  await this.http.get<any>(`${this.baseUrl}/productos`)
   }
 
   async getOneProduct(id: string){

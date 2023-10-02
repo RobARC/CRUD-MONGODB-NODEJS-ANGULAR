@@ -22,6 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgPipesModule} from 'ngx-pipes'
+import { LoginComponent } from './pages/login/login.component';
+import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import {NgPipesModule} from 'ngx-pipes'
     SearchComponent,
     ItemComponent,
     ProductoComponent,
+    LoginComponent,
+    CrearUsuarioComponent
+    
    
   ],
   imports: [
@@ -50,7 +56,8 @@ import {NgPipesModule} from 'ngx-pipes'
     ReactiveFormsModule,
     MatDialogModule,
     NgxPaginationModule,
-    NgPipesModule
+    NgPipesModule,
+    
     
     
   ],

@@ -3,16 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { PortafolioComponent } from './pages/portafolio/portafolio.component';
 import { ItemComponent } from './pages/item/item.component';
 import { ProductoComponent } from './pages/producto/producto.component';
+import { LoginComponent } from './pages/login/login.component';
+import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component';
 
 
 const routes: Routes = [
+  {path: 'login', component: LoginComponent},
   {path: 'home', component: PortafolioComponent},
   {path: 'item/:id', component: ItemComponent},
   {path: 'productos', component: ProductoComponent},
   {path: 'producto/:id', component: ProductoComponent},
+  {path: 'login', component: LoginComponent}, 
+  {path: 'registro', component: CrearUsuarioComponent}, 
 
   //{path: 'search/:termino', component: SearchComponent},
-  {path: '**', pathMatch: 'full', redirectTo: 'home'}
+  {path: '**', pathMatch: 'full', redirectTo: 'login'}
 ];
 
 @NgModule({

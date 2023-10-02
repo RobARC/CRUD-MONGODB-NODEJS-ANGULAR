@@ -10,6 +10,7 @@ import { ProductosService } from 'src/app/service/productos.service';
 })
 export class ItemComponent {
   showModal: boolean = false;
+  rol: any;
   
 
   constructor(private productosService: ProductosService,
@@ -27,8 +28,11 @@ export class ItemComponent {
       this.productoId = this.route.snapshot.params['id'];
       
       this.obtenerProducto(this.productoId)
+      this.rol = this.GetRole();
+      console.log(this.rol);
     }
 
+   
     async obtenerProducto(id: string){
       (await this.productosService.getOneProduct(id)).subscribe(product => {
         this.producto = product
@@ -51,8 +55,9 @@ export class ItemComponent {
       }
     }
 
-    openDialog() {
-      
-      
+    GetRole() {
+      const item = window.localStorage.getItem('rol');
+      return item;
     }
+    
 }
