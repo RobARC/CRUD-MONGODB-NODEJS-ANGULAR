@@ -9,10 +9,10 @@ const uri = process.env.DB_URI_LOCAL;
 console.log(uri);
 
 connect(uri)
-.then( () => console.log('Connected to database'))
+
+.then( () => console.log('Connected to database OK'))
 .catch( (e) => console.log('Error connecting to database' + e));
 
 const productoModel = model('Productos', new Schema (Producto));
 // Works
 productoModel.findOne();
-

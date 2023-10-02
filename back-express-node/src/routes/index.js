@@ -1,13 +1,67 @@
 const { Router } = require('express');
 const router = Router();
 const Producto = require('../model/Producto');
+const UserInfo = require('../model/UserInfo');
+const Usuario = require('../model/Usuario');
 const mongoose = require('mongoose');
 
 const db = 'Productos';
 
-//OBTENER PRODUCTOS
+const jwt = require('jsonwebtoken');
 
-router.get('/', async (req, res) => {
+//CREAR UNA CUENTA
+router.post('/Create', async (req, res) => {
+    const { nombre,
+        userName,
+        email,
+        password,
+        rol, 
+        } = req.body;
+
+        const newUser = new Usuario({
+            userName, 
+            email, 
+            password,
+             rol});
+        await newUser.save();     
+
+        const token = jwt.sign({_id: newUser._id}, 'ninjaSecret');
+        res.status(200).json(token);
+});
+
+//LOGIN
+router.post('/Login', async (req, res) => {
+    const mostrar = async () =>{
+        const { email,
+            password,
+            rol
+        } = req.body;
+
+        console.log(req.body);
+
+        const newUserInfo = Usuario({
+            email, 
+            password,
+            rol
+            });
+       
+        //recuperamos el registro
+        const userInfo = await Usuario.findOne({email})
+      
+        //validaciones simples (Hace falta encriptarlas)
+        if(!userInfo.email) return res.status(401).send("El email no exite");
+        if(userInfo.password !== password) return res.status(401).send("El password no coincide")
+        //Obtenemos el rol
+        this.rol = userInfo.rol;
+        //Generamos el token
+        const token =jwt.sign({_id: userInfo._id}, 'ninjaSecret');
+        res.status(200).json( {token: token, rol: this.rol} );
+    }
+    mostrar();
+});
+
+//OBTENER PRODUCTOS
+router.get('/productos', async (req, res) => {
     const mostrar = async () =>{
         const productos = await Producto.find({})
         res.send(productos);
@@ -44,7 +98,7 @@ router.post('/productos', async (req, res) => {
         precio, 
         stock,
     });
-   console.log(newProducto);
+   //console.log(newProducto);
     await newProducto.save();
     res.send('Productos');
 })
@@ -54,7 +108,6 @@ router.put('/producto/:id', async (req, res) => {
     const productoId = req.params.id;
     const producto = async (productoId) => {
         const producto = await Producto.findByIdAndUpdate({_id: productoId});
-        console.log(producto);
         producto.nombre= req.body.nombre ;
         producto.descripcion= req.body.descripcion ;
         producto.sku= req.body.sku;
