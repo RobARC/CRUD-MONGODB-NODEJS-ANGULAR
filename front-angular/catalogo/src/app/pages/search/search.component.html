@@ -1,1 +1,18 @@
-<p>search works!</p>
+<div class="two-column-container">
+    <mat-card class="myCard text-center">
+        <mat-card-content>
+            <a *ngFor="let producto of productosFiltrado" href="#" > 
+                <h2 class="nombre">
+                    {{ producto.nombre }}
+                </h2>
+                <img src="{{ producto.imagen }}" mat-card-image class="myImage" height="400" />
+                <h3>Descripción: {{ producto.descripcion }}</h3>
+                <h3>Categorias: {{ producto.categorias }}</h3>
+                <h3>Precio: ${{ producto.precio }}</h3>
+                <h3>stock: {{ producto.stock }}</h3>
+            </a>
+          
+        </mat-card-content>
+    </mat-card>
+
+</div>

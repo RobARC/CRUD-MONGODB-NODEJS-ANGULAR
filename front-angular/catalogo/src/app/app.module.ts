@@ -24,6 +24,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {NgPipesModule} from 'ngx-pipes'
 import { LoginComponent } from './pages/login/login.component';
 import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle'
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.compo
     ItemComponent,
     ProductoComponent,
     LoginComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+ 
+    
     
    
   ],
@@ -57,9 +61,8 @@ import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.compo
     MatDialogModule,
     NgxPaginationModule,
     NgPipesModule,
-    
-    
-    
+    MatButtonToggleModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

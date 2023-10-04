@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 
@@ -9,6 +9,7 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class HeaderComponent {
 
+  @Output() sideNavClose = new EventEmitter();
   rol: any;
 
   constructor(
@@ -40,5 +41,18 @@ export class HeaderComponent {
     //this.loginService.triggerRefresh.emit(this.rol);
     
   }
+
+  public onSideNavClose = () => {
+    this.sideNavClose.emit();
+  }
+
+  buscarProducto(termino: string) {
+    console.log(termino);
+    if( termino.length < 1 ) {
+    return;
+  } 
+
+  this.router.navigate(['/buscar', termino]);
+}
  
 }

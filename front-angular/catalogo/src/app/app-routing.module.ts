@@ -5,6 +5,7 @@ import { ItemComponent } from './pages/item/item.component';
 import { ProductoComponent } from './pages/producto/producto.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component';
+import { SearchComponent } from './pages/search/search.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'item/:id', component: ItemComponent},
   {path: 'productos', component: ProductoComponent},
   {path: 'producto/:id', component: ProductoComponent},
+  {path: 'buscar/:termino', component: SearchComponent},
   {path: 'login', component: LoginComponent}, 
   {path: 'registro', component: CrearUsuarioComponent}, 
 
