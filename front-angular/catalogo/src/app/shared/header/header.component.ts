@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 
@@ -11,6 +11,10 @@ export class HeaderComponent {
 
   @Output() sideNavClose = new EventEmitter();
   rol: any;
+  active: boolean = false;
+  recargarHeader: number = 0;
+
+  
 
   constructor(
     private router: Router,
@@ -19,8 +23,17 @@ export class HeaderComponent {
 
   ngOnInit() {
     this.rol = this.GetRole();
-    console.log(this.rol);
-   
+    this.loginService.triggerRefresh.subscribe(() => {
+
+      console.log('HOLA');
+      this.reloadPage();
+        
+          
+    });
+  }
+
+  actualizarHeader() {
+    this.recargarHeader = this.recargarHeader ? 0 : 1;
   }
 
   GetRole() {
@@ -29,8 +42,6 @@ export class HeaderComponent {
   }
 
   Logout(){
-    console.log(this.rol);
-    
     this.loginService.triggerRefresh.emit(this.rol);
     localStorage.removeItem('token');
     localStorage.removeItem('tokenExpiration');
@@ -47,12 +58,31 @@ export class HeaderComponent {
   }
 
   buscarProducto(termino: string) {
-    console.log(termino);
     if( termino.length < 1 ) {
     return;
   } 
 
   this.router.navigate(['/buscar', termino]);
+}
+
+setActive(): void{
+  this.active = !this.active;
+}
+
+homeLogin(){
+  if(this.rol === null){
+    this.router.navigate(['/login']);
+  } else {
+    this.router.navigate(['/home']);
+  }
+}
+
+reloadPage() {
+
+ setTimeout(() => {
+    location.reload();
+ }, 100);
+  
 }
  
 }

@@ -31,13 +31,8 @@ export class LoginComponent implements OnInit  {
    });
   }
   ngOnInit(): void {
-   this.loginService.triggerRefresh.subscribe(data => {
-    console.log(data);
-    
-    this.refresh();
-   })
-  }
-
+   }
+   
   async onSubmit(){
     this.userInfo.Email = this.checkLoginForm.value.usuario;
     this.userInfo.Password = this.checkLoginForm.value.password;
@@ -53,20 +48,19 @@ export class LoginComponent implements OnInit  {
     (error: any) => this.errorMessage(error)
     alert("Login Successful");
     this.checkLoginForm.reset()
-    this.router.navigate(['home']);
     //window.location.reload();
-  
+    this.router.navigate(['home']);
+    
+    this.loginService.triggerRefresh.emit();
+      
   }
 
   getToken(token: string, tokenExpiration: string, rol: string ) { 
-    console.log(token);
-    console.log('hola');
-    
     localStorage.setItem('token', token);
     localStorage.setItem('tokenExpiration', tokenExpiration);
     localStorage.setItem('rol', rol);
-    window.location.reload();
-    this.router.navigate(['home']);
+    //window.location.reload();
+    //this.router.navigate(['home']);
   }
 
   calcularFechaExpiracion(tiempoDeVidaEnMinutos: number): Date {
@@ -86,6 +80,7 @@ export class LoginComponent implements OnInit  {
     
     await window.location.reload();
   }
+
  } 
 
 

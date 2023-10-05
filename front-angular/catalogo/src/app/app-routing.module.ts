@@ -6,19 +6,19 @@ import { ProductoComponent } from './pages/producto/producto.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component';
 import { SearchComponent } from './pages/search/search.component';
+import { AuthGuardService } from './service/auth-guard.service';
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: PortafolioComponent},
   {path: 'item/:id', component: ItemComponent},
-  {path: 'productos', component: ProductoComponent},
+  {path: 'productos', component: ProductoComponent, canActivate: [AuthGuardService]},
   {path: 'producto/:id', component: ProductoComponent},
   {path: 'buscar/:termino', component: SearchComponent},
   {path: 'login', component: LoginComponent}, 
-  {path: 'registro', component: CrearUsuarioComponent}, 
+  {path: 'registro', component: CrearUsuarioComponent, canActivate: [AuthGuardService]}, 
 
-  //{path: 'search/:termino', component: SearchComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'login'}
 ];
 

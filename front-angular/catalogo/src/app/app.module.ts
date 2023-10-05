@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { ProductoComponent } from './pages/producto/producto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +26,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle'
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { UsuariosService } from './service/usuarios.service';
+import { ProductosService } from './service/productos.service';
+import { LoginService } from './service/login.service';
+import { AuthInterceptorService } from './service/auth-interceptor.service';
+import { AuthGuardService } from './service/auth-guard.service';
+
 
 
 @NgModule({
@@ -39,10 +45,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     ProductoComponent,
     LoginComponent,
     CrearUsuarioComponent,
+    
  
-    
-    
-   
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatButtonToggleModule,
     MatSidenavModule,
   ],
-  providers: [],
+  providers: [UsuariosService, ProductosService, LoginService, 
+              AuthInterceptorService, AuthGuardService,
+            {
+              provide: HTTP_INTERCEPTORS,
+                useClass: AuthInterceptorService,
+                multi: true
+            }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

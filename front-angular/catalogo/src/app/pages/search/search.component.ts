@@ -18,7 +18,6 @@ export class SearchComponent {
     ngOnInit(): void {
     
       this.route.params.subscribe(params => {
-        console.log(params['termino']);
   
         this.buscarProducto(params['termino'])
         
@@ -33,8 +32,6 @@ export class SearchComponent {
         this.productosFiltrado = []
   
         termino = termino.toLowerCase();
-  
-        console.log(this.productos);
   
         this.productos.forEach(prod => {
   

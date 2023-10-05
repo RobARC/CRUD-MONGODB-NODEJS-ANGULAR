@@ -29,13 +29,14 @@ export class ItemComponent {
       
       this.obtenerProducto(this.productoId)
       this.rol = this.GetRole();
-      console.log(this.rol);
     }
 
    
     async obtenerProducto(id: string){
       (await this.productosService.getOneProduct(id)).subscribe(product => {
         this.producto = product
+      
+        
       });
     }
 

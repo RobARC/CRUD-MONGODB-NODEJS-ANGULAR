@@ -1,32 +1,34 @@
-<mat-toolbar class="barra" color="primary">
-    <div class="menu">
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-            routerLink="/login">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
-    <div>
-        <span routerLink="">Portafolio de Productos</span>
-    </div>
-    <div class="items">
-        <ul class="ul-items">
-            <li>
-                <a routerLink="">Agregar Productos</a>
+<header class="header">
+    <h1 class="header__h1"  >
+       <span (click)="homeLogin()">Portafolio Productos</span> 
+    </h1>
+    <ng-template appRecarga></ng-template>
+    
+    <button (click)="setActive()" class="header__button" >
+        <svg class="header__svg"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+    </button>
+    <nav class="header__nav"
+        [ngClass]="{'header__nav--activo': active}">
+        <ul class="header__ul">
+            <li class="header__li">
+                <a href="#" class="header__a" routerLink="/productos"  *ngIf="rol === 'Administrador'">Agregar productos</a>
             </li>
-            <li>
-                <a routerLink="">Crear Usuario</a>
+            <li class="header__li">
+                <a href="#" class="header__a" routerLink="registro"  *ngIf="rol === 'Administrador'">Crear Usuario</a>
             </li>
-            <li>
-                <a routerLink="">Logout</a>
+            <li class="header__li">
+                <a href="#" class="header__a" (click)="Logout()" *ngIf="rol === 'Administrador' || rol === 'Usuario'">Logout</a>
             </li>
-            <li>
+            <li class="header__li">
                 <input tipe="text" 
                 (keyup.enter)="buscarProducto(txtBuscar.value)"
                 placeholder="Buscar..."
                 id="mySearch"
-                #txtBuscar />
+                #txtBuscar 
+                *ngIf="rol === 'Administrador' || rol === 'Usuario'"/>
             </li>
         </ul>
-
-    </div>
-</mat-toolbar>
+    </nav>
+</header>
