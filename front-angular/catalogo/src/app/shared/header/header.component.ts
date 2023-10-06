@@ -24,11 +24,7 @@ export class HeaderComponent {
   ngOnInit() {
     this.rol = this.GetRole();
     this.loginService.triggerRefresh.subscribe(() => {
-
-      console.log('HOLA');
       this.reloadPage();
-        
-          
     });
   }
 
@@ -78,11 +74,9 @@ homeLogin(){
 }
 
 reloadPage() {
-
  setTimeout(() => {
     location.reload();
  }, 100);
-  
 }
  
 }

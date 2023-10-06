@@ -21,22 +21,15 @@ export class PortafolioComponent {
 
               
   ngOnInit() {
-    
     this.obtenerProductos();
     this.loginService.triggerRefresh.subscribe(() => {
       this.ngOnInit();
-      
-     
     });
-    
-   
   }
 
   async obtenerProductos(){
     (await this.productosService.getProductos()).subscribe((productos: any) => {
       this.productos = productos
-   
-     
     });
   }
 
@@ -46,7 +39,6 @@ export class PortafolioComponent {
 
   GetRole() {
      const item = window.localStorage.getItem('rol');
-    
      return item;
   }
 }
