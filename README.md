@@ -34,6 +34,13 @@ In this project the challenge was to build a product catalog, where products can
 
 <img src="./front-angular/catalogo/images/desktopview.png" alt="Image deployed in localhost"/>
 
+### Mobile View
+
+<img src="./front-angular/catalogo/images/mobileview.png" alt="mobile view"/>
+<img src="./front-angular/catalogo/images/mobileview2.png" alt="mobile view"/>
+<img src="./front-angular/catalogo/images/mobileview3.png" alt="mobile view"/>
+<img src="./front-angular/catalogo/images/mobileview4.png" alt="mobile view"/>
+
 ### Backend Deployed View
 
 <img src="./front-angular/catalogo/images/backend.png" alt="Image deployed backend in vercel"/>
@@ -70,6 +77,41 @@ In this project the challenge was to build a product catalog, where products can
 - ngx-pipes v3.2.2
 - rxjs  v7.8.0
 
+To see how you can add code snippets, see below:
+
+```html
+<h1>Some HTML code I'm proud of</h1>
+
+    <mat-card-content>
+            <a *ngFor="let producto of productosFiltrado" href="#" > 
+                <h2 class="nombre">
+                    {{ producto.nombre }}
+                </h2>
+                <img src="{{ producto.imagen }}" mat-card-image class="myImage" height="400" />
+                <h3>Descripción: {{ producto.descripcion }}</h3>
+                <h3>Categorias: {{ producto.categorias }}</h3>
+                <h3>Precio: ${{ producto.precio }}</h3>
+                <h3>stock: {{ producto.stock }}</h3>
+            </a>
+        </mat-card-content>
+```
+
+```css
+.two-column-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+    grid-gap: 10px; /* Espacio entre las columnas */
+    
+}
+```
+
+```ts
+reloadPage() {
+ setTimeout(() => {
+    location.reload();
+ }, 100);
+}
+```
 ### Useful resources
 
 - [MongoDB](https://www.mongodb.com/docs/) - a No Relational Database
